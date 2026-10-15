@@ -13,13 +13,15 @@
 // STEP 1: Select DOM Elements
 // ===================================
 // TODO: Select the theme toggle button (id: 'themeToggle')
-const themeToggleBtn = null;
+const themeToggleBtn = document.getElementById('themeToggle');
+//console.log(themeToggleBtn);
 
 // TODO: Select the theme icon element (id: 'themeIcon')
-const themeIcon = null;
+const themeIcon = document.querySelector('#themeIcon');
+//console.log('theme Icon: ', themeIcon);
 
 // TODO: Get the <body> element
-const body = null;
+const body = document.body;
 
 
 // ===================================
@@ -28,6 +30,7 @@ const body = null;
 // TODO: Add a 'click' event listener to the toggle button
 // The event listener should call the toggleDarkMode function
 // Your code here:
+themeToggleBtn.addEventListener('click', toggleDarkMode);
 
 
 // ===================================
@@ -36,9 +39,17 @@ const body = null;
 function toggleDarkMode() {
     // TODO 1: Toggle the 'dark-mode' class on the body element
     // Your code here:
+    console.log('Clicked toggle theme button');
+    body.classList.toggle('dark-mode');
 
     // TODO 2: Update the icon based on the current mode
     // Your code here:
+    // True that it's dark mode then set icon to sun. Else, icon should be moon.
+    if (body.classList.contains('dark-mode')) {
+        updateIcon(true);
+    } else {
+        updateIcon(false);
+    }
     
     // Optional: Save the current mode to localStorage
     // This is optional - try it after completing the basic functionality!
@@ -55,7 +66,11 @@ function updateIcon(isDarkMode) {
     // If dark mode: show sun icon ☀️
     // If light mode: show moon icon 🌙
     // Your code here:
-
+    if (isDarkMode) {
+        themeIcon.innerHTML = '<span class="theme-toggle__icon" id="themeIcon">☀️</span>';
+    } else {
+        themeIcon.innerHTML = '<span class="theme-toggle__icon" id="themeIcon">🌙</span>';
+    }
 }
 
 
